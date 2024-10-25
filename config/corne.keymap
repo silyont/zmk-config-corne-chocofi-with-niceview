@@ -26,16 +26,17 @@
             hold-trigger-on-release;          // enable hold on key release
         };
 
-        lt_rep: layer_tap_repeat {
+       lt_rep: layer_tap_repeat {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_REPEAT";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            global-quick-tap;
-            flavor = "hold-preferred";
+            flavor = "balanced";            // Changed to balanced
             bindings = <&mo>, <&kp>;
-            retro-tap;            // Allows tap when no other key pressed
+            hold-trigger-key-positions = <0>;  // Enable repeat for all keys
+            hold-trigger-on-release;          // Wait for release to trigger hold
+            retro-tap;                        // Allow tap when no other key pressed
         };
     };
 
