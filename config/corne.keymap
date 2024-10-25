@@ -26,17 +26,15 @@
             hold-trigger-on-release;          // enable hold on key release
         };
 
-       lt_rep: layer_tap_repeat {
+       lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_REPEAT";
+            label = "LAYER_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            flavor = "balanced";            // Changed to balanced
+            tapping-term-ms = <200>;     // Faster tap term for layers
+            quick-tap-ms = <200>;        // Tap twice quickly for repeat
+            flavor = "balanced";         // Equal priority to tap and hold
             bindings = <&mo>, <&kp>;
-            hold-trigger-key-positions = <0>;  // Enable repeat for all keys
-            hold-trigger-on-release;          // Wait for release to trigger hold
-            retro-tap;                        // Allow tap when no other key pressed
+            retro-tap;                   // Tap keys when used alone
         };
     };
 
@@ -54,7 +52,7 @@
 &none  &kp Q       &kp W       &kp E        &kp R         &kp T            &kp Y          &kp U          &kp I         &kp O       &kp P          &none
 &none  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F   &kp G            &kp H          &hm RSHFT J    &hm RCTRL K   &hm RALT L  &hm RGUI SEMI  &none
 &none  &kp Z       &kp X       &kp C        &kp V         &kp B            &kp N          &kp M          &kp COMMA     &kp DOT     &kp SLASH      &none
-                               &lt_rep MEDIA DEL  &lt_rep NUM BSPC  &lt_rep NAV ESC    &lt_rep MOUSE TAB  &lt_rep SYM SPACE  &lt_rep FUNC RET
+                               &lt MEDIA DEL  &lt NUM BSPC  &lt NAV ESC    &lt MOUSE TAB  &lt SYM SPACE  &lt FUNC RET
             >;
 
             label = "Base";
