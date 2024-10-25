@@ -26,15 +26,10 @@
             hold-trigger-on-release;          // enable hold on key release
         };
 
-       lt: layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;     // Faster tap term for layers
-            quick-tap-ms = <200>;        // Tap twice quickly for repeat
-            flavor = "balanced";         // Equal priority to tap and hold
-            bindings = <&mo>, <&kp>;
-            retro-tap;                   // Tap keys when used alone
+       lt {
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            flavor = "hold-preferred";
         };
     };
 
