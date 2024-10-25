@@ -25,12 +25,6 @@
             hold-trigger-key-positions = <0>;  // enable key repeat
             hold-trigger-on-release;          // enable hold on key release
         };
-
-       lt {
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            flavor = "hold-preferred";
-        };
     };
 
     keymap {
