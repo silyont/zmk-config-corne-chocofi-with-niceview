@@ -25,6 +25,18 @@
             hold-trigger-key-positions = <0>;  // enable key repeat
             hold-trigger-on-release;          // enable hold on key release
         };
+
+        lt_rep: layer_tap_repeat {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_REPEAT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            global-quick-tap;
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&kp>;
+            retro-tap;            // Allows tap when no other key pressed
+        };
     };
 
     keymap {
@@ -41,7 +53,7 @@
 &none  &kp Q       &kp W       &kp E        &kp R         &kp T            &kp Y          &kp U          &kp I         &kp O       &kp P          &none
 &none  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F   &kp G            &kp H          &hm RSHFT J    &hm RCTRL K   &hm RALT L  &hm RGUI SEMI  &none
 &none  &kp Z       &kp X       &kp C        &kp V         &kp B            &kp N          &kp M          &kp COMMA     &kp DOT     &kp SLASH      &none
-                               &lt NAV DEL  &lt NUM BSPC  &lt MEDIA ESC    &lt MOUSE TAB  &lt SYM SPACE  &lt FUNC RET
+                               &lt_rep MEDIA DEL  &lt_rep NUM BSPC  &lt_rep NAV ESC    &lt_rep MOUSE TAB  &lt_rep SYM SPACE  &lt_rep FUNC RET
             >;
 
             label = "Base";
@@ -107,7 +119,7 @@
 
             bindings = <
 &none  &kp N1  &kp N2  &kp N3     &kp N4  &kp N5    &kp N6   &kp N7  &kp N8  &kp N9  &kp N0   &none
-&none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &none    &kp SEMI  &none &none  &none   &kp EQUAL  &none
+&none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &none    &kp SEMI  &kp LSHFT &none  &none   &kp EQUAL  &none
 &none  &none     &none     &none      &none      &none    &kp GRAVE  &none &none &none   &kp BSLH   &none
                            &none      &trans     &none    &kp DOT   &none   &none
             >;
