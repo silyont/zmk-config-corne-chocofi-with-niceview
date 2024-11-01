@@ -12,6 +12,12 @@
 #define FUNC  6
 
 / {
+    keylogger {
+        compatible = "zmk,keylogger";
+        status = "okay";
+        max-entries = <5>;
+    };
+
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
@@ -38,33 +44,17 @@
             hold-trigger-key-positions = <0>;  // enable key repeat
             hold-trigger-on-release;          // enable hold on release
         };
-
-        tog_klog: toggle_keylogger {
-            compatible = "zmk,behavior-tap";
-            label = "TOGGLE_KEYLOGGER";
-            #binding-cells = <0>;
-            bindings = <&tog_klog_fn>;
-        };
     };
 
     macros {
-        tog_klog_fn: toggle_keylogger_func {
+        keylog_toggle: keylogger_toggle {
             compatible = "zmk,behavior-macro";
-            label = "TOGGLE_KEYLOGGER_FUNC";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&macro_press &kp LCTRL>,
-                      <&macro_tap &kp L>,
+                      <&macro_tap &kp K>,
                       <&macro_release &kp LCTRL>;
-        };
-    };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        keylog_toggle {
-            if-layers = <6>;
-            then-layer = <7>;
         };
     };
 
@@ -183,7 +173,7 @@
             bindings = <
 &none  &kp F12  &kp F7  &kp F8  &kp F9  &kp PSCRN       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
 &none  &kp F11  &kp F4  &kp F5  &kp F6  &kp SLCK        &kp K_LOCK    &kp RSHFT     &kp RCTRL     &kp RALT      &kp RGUI      &none
-&none  &kp F10  &kp F1  &kp F2  &kp F3  &kp PAUSE_BREAK &tog_klog         &none         &none         &none         &none         &none
+&none  &kp F10  &kp F1  &kp F2  &kp F3  &kp PAUSE_BREAK &keylog_toggle         &none         &none         &none         &none         &none
                         &none   &none   &none           &none         &none         &trans
             >;
 
