@@ -19,6 +19,32 @@ static struct {
     .enabled = false
 };
 
+static int zmk_widget_status_screen_init(const struct device *dev) {
+    LOG_DBG("Initializing status screen widget");
+    
+    // Add more specific initialization checks
+    if (!zmk_display_is_initialized()) {
+        LOG_ERR("Display not initialized");
+        return -ENODEV;
+    }
+
+    if (!lv_is_initialized()) {
+        LOG_ERR("LVGL not initialized");
+        return -ENODEV;
+    }
+
+    lv_obj_t *screen = lv_scr_act();
+    if (screen == NULL) {
+        LOG_ERR("Could not get active screen");
+        return -ENODEV;
+    }
+
+    draw_keylog(screen);
+    LOG_DBG("Status screen widget initialized");
+
+    return 0;
+}
+
 static void keylog_add_keycode(uint16_t keycode) {
     if (!keylog.enabled) {
         LOG_DBG("Keylogger disabled, not logging keycode: %d", keycode);

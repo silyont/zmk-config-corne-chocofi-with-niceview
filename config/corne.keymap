@@ -21,28 +21,26 @@
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
             #binding-cells = <2>;
             tapping-term-ms = <280>;
-            quick-tap-ms = <175>;             // enable quick tap
-            global-quick-tap;                 // enable global quick tap
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;    // replaces global-quick-tap
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <0>;  // enable key repeat
-            hold-trigger-on-release;          // enable hold on key release
+            hold-trigger-key-positions = <0>;
+            hold-trigger-on-release;
         };
 
         lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP";
             #binding-cells = <2>;
             tapping-term-ms = <280>;
-            quick-tap-ms = <175>;             // enable quick tap
-            global-quick-tap;                 // enable global quick tap
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;    // replaces global-quick-tap
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
-            hold-trigger-key-positions = <0>;  // enable key repeat
-            hold-trigger-on-release;          // enable hold on release
+            hold-trigger-key-positions = <0>;
+            hold-trigger-on-release;
         };
     };
 
