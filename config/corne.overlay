@@ -48,6 +48,14 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9)
     };
 };
 
-&nice_view {
+&pro_micro_spi {
     status = "okay";
+
+    nice_view: nice_view@0 {
+        compatible = "nordic,spi-dev";
+        status = "okay";
+        reg = <0>;
+        label = "NICE_VIEW";
+        spi-max-frequency = <4000000>;
+    };
 };
