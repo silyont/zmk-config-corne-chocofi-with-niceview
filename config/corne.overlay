@@ -47,8 +47,11 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9)
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
         label = "BATTERY";
-        io-channels = <&adc 7>;    // Use ADC channel 7 for battery monitoring
+        io-channels = <&adc 7>;
         output-ohms = <2000000>;
         full-ohms = <(2000000 + 806000)>;
+        full-ohms-supplement = <0>;
+        full-mv = <4200>;        // 4.2V for fully charged LiPo
+        empty-mv = <3400>;       // 3.4V for discharged LiPo
     };
 };
