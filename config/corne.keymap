@@ -16,8 +16,8 @@
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <230>;
-            quick-tap-ms = <160>;
+            tapping-term-ms = <180>;
+            quick-tap-ms = <120>;
             require-prior-idle-ms = <150>;    // replaces global-quick-tap
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -28,8 +28,8 @@
         lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <230>;
-            quick-tap-ms = <160>;
+            tapping-term-ms = <180>;
+            quick-tap-ms = <120>;
             require-prior-idle-ms = <150>;    // replaces global-quick-tap
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
